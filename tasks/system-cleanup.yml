@@ -1,0 +1,4 @@
+- name: Autoremove and Purge APT Packages
+  apt:
+    autoremove: yes
+    purge: yes

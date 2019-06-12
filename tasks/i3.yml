@@ -13,7 +13,3 @@
       - scrot
       - xorg
       - xserver-xorg
-- name: Autoremove and Purge APT Packages
-  apt:
-    autoremove: yes
-    purge: yes
