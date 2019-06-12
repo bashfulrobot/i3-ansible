@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: true
+  include_vars:
+    file: config.yml
+  pre_tasks:
+    - name: Update Repositories
+      apt: update_cache=yes
+      changed_when: false
+  tasks:
+    - include: tasks/user.yml
