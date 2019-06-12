@@ -5,6 +5,5 @@
       apt: update_cache=yes
       changed_when: false
   tasks:
-    - include_vars:
-      file: config.yml
+    - include: config.yml
     - include: tasks/user.yml
