@@ -1,10 +1,9 @@
 - hosts: localhost
+  include_vars: config.yml
   become: true
-  import_playbook: config.yml
   pre_tasks:
     - name: Update Repositories
       apt: update_cache=yes
       changed_when: false
   tasks:
-    - include: config.yml
     - include: tasks/user.yml
