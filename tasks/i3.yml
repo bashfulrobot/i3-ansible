@@ -4,6 +4,18 @@
   vars:
     packages:
       - i3
+      - ubuntu-drivers-common
+      - mesa-utils
+      - mesa-utils-extra
+      - gnupg
+      - numlockx
+      - xautolock
+      - scrot
+      - xorg
+      - xserver-xorg
+      - wget
+      - unzip
+      - firefox
 - name: Autoremove and Purge APT Packages
   apt:
     autoremove: yes
