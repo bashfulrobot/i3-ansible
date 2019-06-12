@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Show script errors
+set -eE -o functrace
+
 ### SCRIPT VARS
 ANSIBLE=$(which ansible-playbook)
 APULL=$(which ansible-pull)
