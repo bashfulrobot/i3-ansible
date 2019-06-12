@@ -10,3 +10,4 @@
     - include: tasks/user.yml
     - include: tasks/zsh.yml
     - include: tasks/i3.yml
+    - include: tasks/optional-software.yml

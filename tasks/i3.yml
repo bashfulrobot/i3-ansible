@@ -13,9 +13,6 @@
       - scrot
       - xorg
       - xserver-xorg
-      - wget
-      - unzip
-      - firefox
 - name: Autoremove and Purge APT Packages
   apt:
     autoremove: yes

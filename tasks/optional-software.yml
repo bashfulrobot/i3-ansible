@@ -1,0 +1,12 @@
+- name: Install Desktop I3 Packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - wget
+      - unzip
+      - firefox
+
+- name: Enabling Snap Pacakge Support
+  apt:
+    name: snapd
