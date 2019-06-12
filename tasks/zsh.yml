@@ -1,0 +1,110 @@
+- name: Install ZSH Shell
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - git
+      - zsh
+      - fonts-powerline
+      - powerline
+  register: install_zsh
+
+- name: Change current user shell
+  user:
+    name: "{{ my_username }}"
+    shell: /usr/bin/zsh
+  become: yes
+
+- name: Clone oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: /home/{{ my_username }}/.oh-my-zsh
+    update: no
+  become: no
+  register: omz_clone
+
+- name: Clone zsh-autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /home/{{ my_username }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    update: yes
+
+- name: Clone zsh-history-substring-search
+  git:
+    repo: https://github.com/zsh-users/zsh-history-substring-search.git
+    dest: /home/{{ my_username }}/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+    update: yes
+
+- name: Clone zsh-syntax-highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /home/{{ my_username }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    update: yes
+
+- name: Clone powerlevel10k Theme
+  git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: /home/{{ my_username }}/.oh-my-zsh/custom/themes/powerlevel10k
+    update: yes
+
+- name: check if .zshrc exists
+  when: install_zsh is success
+  stat:
+    path: /home/{{ my_username }}/.zshrc
+  register: zshrc
+
+- name: back up existing .zshrc file if it exists
+  when: zshrc.stat.exists
+  copy:
+    src: /home/{{ my_username }}/.zshrc
+    dest: /home/{{ my_username }}/.zshrc-orig
+
+- name: Creating new ~/.zshrc
+  copy:
+    src: /home/{{ my_username }}/.oh-my-zsh/templates/zshrc.zsh-template
+    dest: /home/{{ my_username }}/.zshrc
+  when: omz_clone is success
+  become: no
+  register: created_zshrc
+
+- name: Placing general.zsh CFG
+  copy:
+    src: files/dotfiles/zsh/general.zsh
+    dest: "/home/{{ my_username }}/.oh-my-zsh/custom/general.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+
+- name: Placing plugins.zsh CFG
+  copy:
+    src: files/dotfiles/zsh/plugins.zsh
+    dest: "/home/{{ my_username }}/.oh-my-zsh/custom/plugins.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+
+- name: Placing aliases.zsh CFG
+  copy:
+    src: files/dotfiles/zsh/aliases.zsh
+    dest: "/home/{{ my_username }}/.oh-my-zsh/custom/aliases.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+
+- name: Placing functions.zsh CFG
+  copy:
+    src: files/dotfiles/zsh/functions.zsh
+    dest: "/home/{{ my_username }}/.oh-my-zsh/custom/functions.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+
+- name: Placing path.zsh CFG
+  copy:
+    src: files/dotfiles/zsh/path.zsh
+    dest: "/home/{{ my_username }}/.oh-my-zsh/custom/path.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+
+- name: Placing util-functions.zsh CFG
+  copy:
+    src: files/dotfiles/zsh/util-functions.zsh
+    dest: "/home/{{ my_username }}/.oh-my-zsh/custom/util-functions.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"

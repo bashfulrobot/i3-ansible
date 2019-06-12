@@ -8,3 +8,4 @@
       changed_when: false
   tasks:
     - include: tasks/user.yml
+    - include: tasks/zsh.yml
