@@ -3,8 +3,10 @@
 ### SCRIPT VARS
 ANSIBLE=$(which ansible-playbook)
 APULL=$(which ansible-pull)
+APT=$(which apt)
 GIT=$(which git)
 DPKG=$(which dpkg)
+FIND=$(which find)
 MYLOCBASE="$HOME/tmp"
 MYREPO="$MYLOCBASE/i3-ansible"
 MYREPORMT="https://github.com/bashfulrobot/i3-ansible.git"
@@ -36,7 +38,7 @@ function deployLocal() {
 
 # Update APT Repos of older than 12 hours
 if [ -z "$(find /var/cache/apt/pkgcache.bin -mmin -720)" ]; then
-  sudo apt update
+  sudo $APT update
 fi
 
 
@@ -107,3 +109,6 @@ case $CHOICE in
 esac
 
 exit 0
+
+
+# go/pepstone
