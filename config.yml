@@ -1,4 +1,5 @@
-my_username: dustin
-my_fullname: Dustin Krysak
-my_home: /home/dustin
-my_github_username: bashfulrobot
+vars:
+  my_username: dustin
+  my_fullname: Dustin Krysak
+  my_home: /home/dustin
+  my_github_username: bashfulrobot
