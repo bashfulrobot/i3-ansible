@@ -1,0 +1,10 @@
+- name: Install Desktop I3 Packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - i3
+- name: Autoremove and Purge APT Packages
+  apt:
+    autoremove: yes
+    purge: yes
