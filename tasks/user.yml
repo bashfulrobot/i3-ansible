@@ -11,4 +11,4 @@
     state: present
     key: https://github.com/{{item}}.keys
   with_items:
-    - " {{ my_github_username }}"
+    - "{{ my_github_username }}"
