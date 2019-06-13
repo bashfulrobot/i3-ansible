@@ -6,6 +6,7 @@
       - wget
       - unzip
       - firefox
+      - htop
 
 - name: Enabling Snap Pacakge Support
   apt:

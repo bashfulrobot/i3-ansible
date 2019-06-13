@@ -4,6 +4,8 @@
   vars:
     packages:
       - i3
+      - xinit
+      - dbus-x11
       - ubuntu-drivers-common
       - mesa-utils
       - mesa-utils-extra
@@ -14,11 +16,22 @@
       - xorg
       - xserver-xorg
       - xterm
+      - slick-greeter
+      - lightdm
+      - dconf-service
 
 - name: Placing xinitrc CFG
   copy:
     src: files/dotfiles/xinitrc
     dest: "/home/{{ my_username }}/.xinitrc"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing zprofile CFG
+  copy:
+    src: files/dotfiles/zprofile
+    dest: "/home/{{ my_username }}/.zprofile"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0700
