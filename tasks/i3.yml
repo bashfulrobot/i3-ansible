@@ -58,6 +58,3 @@
   copy:
     src: files/dotfiles/slick-greeter/slick-greeter.conf
     dest: "/etc/lightdm/slick-greeter.conf"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
