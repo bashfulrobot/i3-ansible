@@ -2,3 +2,5 @@ my_username: dustin
 my_fullname: Dustin Krysak
 my_home: /home/dustin
 my_github_username: bashfulrobot
+
+font_awesome_version: 5.9.0

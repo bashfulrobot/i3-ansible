@@ -13,3 +13,9 @@
       - scrot
       - xorg
       - xserver-xorg
+
+- name: Downloading and Extract Font Awesome
+  unarchive:
+    src: https://use.fontawesome.com/releases/v{{font_awesome_version}}/fontawesome-free-{{font_awesome_version}}desktop.zip
+    dest: /tmp
+    remote_src: yes
