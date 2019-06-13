@@ -19,3 +19,15 @@
     src: https://use.fontawesome.com/releases/v{{font_awesome_version}}/fontawesome-free-{{font_awesome_version}}-desktop.zip
     dest: /tmp
     remote_src: yes
+
+- name: Installing Font Awesome
+  become: true
+  copy:
+    src: "{{ item }}"
+    dest: /usr/local/share/fonts/
+  with_fileglob:
+    - /tmp/fontawesome-free-{{font_awesome_version}}-desktop/use-on-desktop/*
+
+- name: Registering New Fonts
+  become: true
+  command: fc-cache -f -v
