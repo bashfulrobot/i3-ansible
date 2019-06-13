@@ -26,7 +26,7 @@
     src: "{{ item }}"
     dest: /usr/local/share/fonts/
   with_fileglob:
-    - /tmp/fontawesome-free-{{font_awesome_version}}-desktop/use-on-desktop/*
+    - /tmp/fontawesome-free-{{font_awesome_version}}-desktop/otfs/*
 
 - name: Registering New Fonts
   become: true
