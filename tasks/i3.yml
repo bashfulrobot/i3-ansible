@@ -58,3 +58,8 @@
   copy:
     src: files/dotfiles/slick-greeter/slick-greeter.conf
     dest: "/etc/lightdm/slick-greeter.conf"
+
+- name: Adding wallpaper
+  copy:
+    src: files/dotfiles/wallpaper/wallpaper.png
+    dest: "/usr/share/wallpaper/wallpaper.png"
