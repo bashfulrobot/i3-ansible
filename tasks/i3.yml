@@ -14,6 +14,14 @@
       - xorg
       - xserver-xorg
 
+- name: Placing xinitrc CFG
+  copy:
+    src: files/dotfiles/xinitrc
+    dest: "/home/{{ myusername }}/.xinitrc"
+    owner: "{{ myusername }}"
+    group: "{{ myusername }}"
+    mode: 0700
+
 - name: Downloading and Extract Font Awesome
   unarchive:
     src: https://use.fontawesome.com/releases/v{{font_awesome_version}}/fontawesome-free-{{font_awesome_version}}-desktop.zip
