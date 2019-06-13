@@ -30,7 +30,7 @@
 
 - name: Placing zprofile CFG
   copy:
-    src: files/dotfiles/zprofile
+    src: files/dotfiles/zsh/zprofile
     dest: "/home/{{ my_username }}/.zprofile"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
