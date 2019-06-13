@@ -13,7 +13,7 @@
       - scrot
       - xorg
       - xserver-xorg
-      - gnome-terminal
+      - xterm
 
 - name: Placing xinitrc CFG
   copy:
