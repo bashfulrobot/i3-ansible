@@ -19,6 +19,10 @@
       - slick-greeter
       - lightdm
       - dconf-service
+      - ssh-askpass
+      - network-manager
+      - vim-nox
+      - lemonbar
 
 - name: Placing xinitrc CFG
   copy:
@@ -59,7 +63,18 @@
     src: files/dotfiles/slick-greeter/slick-greeter.conf
     dest: "/etc/lightdm/slick-greeter.conf"
 
+- name: "Create wallpaper directory"
+  file:
+    path: /usr/share/wallpaper/
+    state: directory        
+    mode: 0755
+    group: root
+    owner: root
+
 - name: Adding wallpaper
   copy:
-    src: files/dotfiles/wallpaper/wallpaper.png
+    src: files/wallpaper/wallpaper.png
     dest: "/usr/share/wallpaper/wallpaper.png"
+    mode: 0755
+    group: root
+    owner: root
