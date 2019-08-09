@@ -41,6 +41,14 @@
     group: "{{ my_username }}"
     mode: 0700
 
+- name: Download Meslo NerdFont for Powerline
+  get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S/Regular/complete/Meslo%20LG%20S%20Regular%20Nerd%20Font%20Complete.ttf
+    dest: /usr/share/fonts/truetype/
+    mode: 0644
+    owner: "root"
+    group: "root"
+
 - name: Downloading and Extract Font Awesome
   unarchive:
     src: https://use.fontawesome.com/releases/v{{font_awesome_version}}/fontawesome-free-{{font_awesome_version}}-desktop.zip
@@ -51,7 +59,10 @@
   become: true
   copy:
     src: "{{ item }}"
-    dest: /usr/local/share/fonts/
+    dest: /usr/share/fonts/opentype/
+    mode: 0644
+    owner: "root"
+    group: "root"
   with_fileglob:
     - /tmp/fontawesome-free-{{font_awesome_version}}-desktop/otfs/*
 
@@ -67,7 +78,7 @@
 - name: "Create wallpaper directory"
   file:
     path: /usr/share/wallpaper/
-    state: directory        
+    state: directory
     mode: 0755
     group: root
     owner: root
