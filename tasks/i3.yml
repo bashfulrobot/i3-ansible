@@ -23,6 +23,7 @@
       - network-manager
       - vim-nox
       - lemonbar
+      - fonts-powerline
 
 - name: Placing xinitrc CFG
   copy:
