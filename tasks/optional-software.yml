@@ -1,4 +1,4 @@
-- name: Install Desktop I3 Packages
+- name: Install Desktop Packages
   apt:
     name: "{{ packages }}"
   vars:
