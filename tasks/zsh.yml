@@ -108,3 +108,10 @@
     dest: "/home/{{ my_username }}/.oh-my-zsh/custom/util-functions.zsh"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
+
+- name: Placing power10k CFG
+  copy:
+    src: files/dotfiles/zsh/.p10k.zsh
+    dest: "/home/{{ my_username }}/.p10k.zsh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"

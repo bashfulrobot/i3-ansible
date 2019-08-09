@@ -18,3 +18,6 @@ ENABLE_CORRECTION="true"
 
 # https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-3-install-awesome-powerline-fonts
 #POWERLEVEL9K_MODE='awesome-patched'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
