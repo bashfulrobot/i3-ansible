@@ -16,3 +16,4 @@ I'm just casually documenting some of the default software that people may not b
 
 - zsh shell w/ oh-my-zsh
 - p10k prompt
+- `nmtui` used to cfg the network.
