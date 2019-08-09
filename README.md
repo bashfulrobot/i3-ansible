@@ -1,6 +1,6 @@
 # i3-ansible
 
-Ansible script to setup i3 on the Ubuntu mini.iso
+Ansible script to setup [i3wm](https://i3wm.org/) on the Ubuntu [mini.iso](https://help.ubuntu.com/community/Installation/MinimalCD).
 
 ## STATUS
 
