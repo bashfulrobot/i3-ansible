@@ -23,7 +23,8 @@
       - network-manager
       - vim-nox
       - lemonbar
-      - fonts-powerline
+      - xdg-utils
+      - snapd-xdg-open
 
 - name: Placing xinitrc CFG
   copy:
