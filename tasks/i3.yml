@@ -32,7 +32,7 @@
     dest: "/home/{{ my_username }}/.Xresources"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
-    mode: 0700
+    mode: '0664'
 
 - name: Create the .Xresources.d directory.
   file:
@@ -46,7 +46,21 @@
     dest: "/home/{{ my_username }}/.Xresources.d/xcolors-nord"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
-    mode: 0700
+    mode: '0664'
+
+- name: Create the .config/i3 directory.
+  file:
+    path: "/home/{{ my_username }}/.config/i3"
+    state: directory
+    mode: '0755'
+
+- name: Placing i3 CFG
+  copy:
+    src: files/dotfiles/i3/config
+    dest: "/home/{{ my_username }}/.config/i3/config"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: '0664'
 
 - name: Placing zprofile CFG
   copy:
@@ -54,13 +68,13 @@
     dest: "/home/{{ my_username }}/.zprofile"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
-    mode: 0700
+    mode: '0664'
 
 - name: Download Meslo NerdFont for Powerline
   get_url:
     url: https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Meslo/S/Regular/complete/Meslo%20LG%20S%20Regular%20Nerd%20Font%20Complete.ttf
     dest: /usr/share/fonts/truetype/
-    mode: 0644
+    mode: '0644'
     owner: "root"
     group: "root"
 
@@ -75,7 +89,7 @@
   copy:
     src: "{{ item }}"
     dest: /usr/share/fonts/opentype/
-    mode: 0644
+    mode: '0644'
     owner: "root"
     group: "root"
   with_fileglob:
@@ -94,7 +108,7 @@
   file:
     path: /usr/share/wallpaper/
     state: directory
-    mode: 0755
+    mode: '0755'
     group: root
     owner: root
 
@@ -102,6 +116,6 @@
   copy:
     src: files/wallpaper/wallpaper.png
     dest: "/usr/share/wallpaper/wallpaper.png"
-    mode: 0755
+    mode: '0664'
     group: root
     owner: root
