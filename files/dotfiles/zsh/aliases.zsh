@@ -4,3 +4,7 @@
 # script, in alphabetical order.
 
 alias pcp='rsync -aP'
+
+alias e='code -r'
+
+alias opermissions="stat -c '%A %a %n'"

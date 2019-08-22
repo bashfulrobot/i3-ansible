@@ -10,7 +10,7 @@ APT=$(which apt)
 GIT=$(which git)
 DPKG=$(which dpkg)
 FIND=$(which find)
-MYLOCBASE="$HOME/tmp"
+MYLOCBASE="$HOME/code"
 MYREPO="$MYLOCBASE/i3-ansible"
 MYREPORMT="https://github.com/bashfulrobot/i3-ansible.git"
 MYPPA="ansible"
@@ -20,7 +20,7 @@ MYPPA="ansible"
 # Check if software is installed and install with APT if needed.
 
 function checkInstalled() {
-$DPKG -s "$1" 2>/dev/null >/dev/null || sudo $APT -y install "$1"
+  $DPKG -s "$1" 2>/dev/null >/dev/null || sudo $APT -y install "$1"
 }
 # Ansible Deploy from local GIT repo
 function deployLocal() {
@@ -44,15 +44,13 @@ if [ -z "$(find /var/cache/apt/pkgcache.bin -mmin -720)" ]; then
   sudo $APT update
 fi
 
-
-neededSoftware=( software-properties-common ansible dialog git )
+neededSoftware=(software-properties-common ansible dialog git vim-nox)
 
 # Install Software if needed
 
-for sw in "${neededSoftware[@]}"
-  do
-    checkInstalled "$sw"
-  done
+for sw in "${neededSoftware[@]}"; do
+  checkInstalled "$sw"
+done
 
 # Configure git
 $GIT config user.name bashfulrobot
@@ -62,8 +60,8 @@ $GIT config user.editor code
 # Setup Ansible CFG
 if [ ! -f $HOME/.ansible.cfg ]; then
   touch $HOME/.ansible.cfg
-  echo '[defaults]' > $HOME/.ansible.cfg
-  echo 'remote_tmp     = /tmp/$USER/ansible' >> $HOME/.ansible.cfg
+  echo '[defaults]' >$HOME/.ansible.cfg
+  echo 'remote_tmp     = /tmp/$USER/ansible' >>$HOME/.ansible.cfg
 fi
 
 # Build Menu
@@ -75,43 +73,42 @@ TITLE="Ansible Deploy"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Local Repo Deploy All"
-         2 "Local Repo Deploy ZSH"
-         3 "Remote Repo Deploy All"
-         4 "Local Repo Test Script")
+  2 "Local Repo Deploy ZSH"
+  3 "Remote Repo Deploy All"
+  4 "Local Repo Test Script")
 
 CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
+  --backtitle "$BACKTITLE" \
+  --title "$TITLE" \
+  --menu "$MENU" \
+  $HEIGHT $WIDTH $CHOICE_HEIGHT \
+  "${OPTIONS[@]}" \
+  2>&1 >/dev/tty)
 
 clear
 
 case $CHOICE in
-        1)
-            echo "Running $MYREPO/local.yml"
-            MYYAML="$MYREPO/local.yml"
-            deployLocal
-            ;;
-        2)
-            echo "Running $MYREPO/local-test.yml"
-            MYYAML="$MYREPO/local-test.yml"
-            deployLocal
-            ;;
-        3)
-            echo "Running ansible-pull from $MYREPORMT"
-            sudo $APULL -U $MYREPORMT
-            ;;
-        4)
-            echo "Running $MYREPO/local-test.yml"
-            MYYAML="$MYREPO/local-test.yml"
-            deployLocal
-            ;;
+1)
+  echo "Running $MYREPO/local.yml"
+  MYYAML="$MYREPO/local.yml"
+  deployLocal
+  ;;
+2)
+  echo "Running $MYREPO/local-test.yml"
+  MYYAML="$MYREPO/local-test.yml"
+  deployLocal
+  ;;
+3)
+  echo "Running ansible-pull from $MYREPORMT"
+  sudo $APULL -U $MYREPORMT
+  ;;
+4)
+  echo "Running $MYREPO/local-test.yml"
+  MYYAML="$MYREPO/local-test.yml"
+  deployLocal
+  ;;
 esac
 
 exit 0
-
 
 # go/pepstone
