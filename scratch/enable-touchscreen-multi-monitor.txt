@@ -1,0 +1,3 @@
+Agh - figured it out. The issue is multi-monitor. You need to map which surface is the touch.
+
+ie - run xrander to get the display name (eDP-1 in my case), then run xinput list to get the name of the touchscreen (ELAN Touchscreen in my case) and then wire it together with xinput --map-to-output 'ELAN Touchscreen' eDP-1. So then I would just need to exec that in my i3 cfg.
