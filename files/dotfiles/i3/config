@@ -154,7 +154,3 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
-
-# Needed - otherwise something is overriding the settings loaded from
-# Xresources. Likely app-defaults.
-exec xrdb -load ~/.Xresources

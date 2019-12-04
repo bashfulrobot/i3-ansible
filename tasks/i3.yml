@@ -26,28 +26,6 @@
       - xdg-utils
       - snapd-xdg-open
 
-- name: Placing Xresources
-  copy:
-    src: files/dotfiles/x11/.Xresources
-    dest: "/home/{{ my_username }}/.Xresources"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: "0664"
-
-- name: Create the .Xresources.d directory.
-  file:
-    path: "/home/{{ my_username }}/.Xresources.d"
-    state: directory
-    mode: "0755"
-
-- name: Placing xcolors-nord CFG
-  copy:
-    src: files/dotfiles/x11/.Xresources.d/xcolors-nord
-    dest: "/home/{{ my_username }}/.Xresources.d/xcolors-nord"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: "0664"
-
 - name: Create the .config/i3 directory.
   file:
     path: "/home/{{ my_username }}/.config/i3"
