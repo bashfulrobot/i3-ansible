@@ -1,3 +1,9 @@
+- name: Create the .config/kitty directory.
+  file:
+    path: "/home/{{ my_username }}/.config/kitty"
+    state: directory
+    mode: "0755"
+
 - name: Placing Kitty CFG
   copy:
     src: files/dotfiles/kitty/kitty.conf
