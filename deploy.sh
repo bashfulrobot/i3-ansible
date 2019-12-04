@@ -3,17 +3,12 @@
 # Show script errors
 set -eE -o functrace
 
-### SCRIPT VARS
-ANSIBLE=$(which ansible-playbook)
-APULL=$(which ansible-pull)
 APT=$(which apt)
-GIT=$(which git)
 DPKG=$(which dpkg)
 FIND=$(which find)
-MYLOCBASE="$HOME/code"
+MYLOCBASE="$HOME/tmp/i3-code"
 MYREPO="$MYLOCBASE/i3-ansible"
 MYREPORMT="https://github.com/bashfulrobot/i3-ansible.git"
-MYPPA="ansible"
 
 ### SCRIPT FUNCTIONS
 
@@ -51,6 +46,10 @@ neededSoftware=(software-properties-common ansible dialog git vim-nox)
 for sw in "${neededSoftware[@]}"; do
   checkInstalled "$sw"
 done
+
+ANSIBLE=$(which ansible-playbook)
+APULL=$(which ansible-pull)
+GIT=$(which git)
 
 # Configure git
 $GIT config user.name bashfulrobot
@@ -110,5 +109,3 @@ case $CHOICE in
 esac
 
 exit 0
-
-# go/pepstone
