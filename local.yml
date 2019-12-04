@@ -13,4 +13,3 @@
     - include: tasks/optional-software.yml
     - include: tasks/system-cleanup.yml
     - include: tasks/dotfiles.yml
-    - include: tasks/fonts.yml
