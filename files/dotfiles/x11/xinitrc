@@ -1,5 +1,3 @@
-export TERMINAL = "xterm"
+export TERMINAL = "kitty"
 # alias open="xdg-open"
 i3
-
-[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
