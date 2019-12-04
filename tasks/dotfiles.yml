@@ -1,15 +1,15 @@
 - name: Placing Kitty CFG
   copy:
     src: files/dotfiles/kitty/kitty.conf
-    dest: "/home/{{ myusername }}/.config/kitty/kitty.conf"
-    owner: "{{ myusername }}"
-    group: "{{ myusername }}"
+    dest: "/home/{{ my_username }}/.config/kitty/kitty.conf"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
     mode: 0700
 
 - name: Placing Kitty Theme
   copy:
     src: files/dotfiles/kitty/snazzy.conf
-    dest: "/home/{{ myusername }}/.config/kitty/snazzy.conf"
-    owner: "{{ myusername }}"
-    group: "{{ myusername }}"
+    dest: "/home/{{ my_username }}/.config/kitty/snazzy.conf"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
     mode: 0700
