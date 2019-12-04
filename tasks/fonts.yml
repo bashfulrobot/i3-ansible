@@ -1,3 +1,9 @@
+- name: Create the .fonts directory.
+  file:
+    path: "/home/{{ my_username }}/.fonts"
+    state: directory
+    mode: "0755"
+
 - name: Placing MesloLGS NF Regular Font
   copy:
     src: "files/fonts/MesloLGS NF Regular.ttf"
