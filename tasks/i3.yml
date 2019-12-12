@@ -15,7 +15,8 @@
       - scrot
       - xorg
       - xserver-xorg
-      - kitty
+      - lxterminal
+      - lxappearance
       - slick-greeter
       - lightdm
       - dconf-service
