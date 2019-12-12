@@ -15,8 +15,10 @@
       - scrot
       - xorg
       - xserver-xorg
-      - lxterminal
+      - kitty
       - lxappearance
+      - papirus-icon-theme
+      - ubuntu-budgie-themes
       - slick-greeter
       - lightdm
       - dconf-service
