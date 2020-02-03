@@ -4,3 +4,5 @@ my_home: /home/dustin
 my_github_username: bashfulrobot
 
 font_awesome_version: 5.12.0
+
+my_timezone: America/Vancouver
